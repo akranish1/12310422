@@ -1,9 +1,10 @@
+require("dotenv").config();
 const {
   STACKS,
   LEVELS,
   BACKEND_PACKAGES
 } = require("./constants");
-
+const url = process.env.LOG_API_URL;
 let AUTH_TOKEN = "";
 
 function setToken(token) {
@@ -38,7 +39,7 @@ async function Log(stack, level, pkg, message) {
     }
 
     const response = await fetch(
-      "http://4.224.186.213/evaluation-service/logs",
+      url,
       {
         method: "POST",
 
